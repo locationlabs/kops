@@ -539,6 +539,7 @@ func autoConvert_v1alpha2_ClusterSpec_To_kops_ClusterSpec(in *ClusterSpec, out *
 	out.Project = in.Project
 	out.MasterPublicName = in.MasterPublicName
 	out.MasterInternalName = in.MasterInternalName
+	out.AdditionalSANs = in.AdditionalSANs
 	out.NetworkCIDR = in.NetworkCIDR
 	out.NetworkID = in.NetworkID
 	if in.Topology != nil {
@@ -739,6 +740,7 @@ func autoConvert_kops_ClusterSpec_To_v1alpha2_ClusterSpec(in *kops.ClusterSpec, 
 	out.Project = in.Project
 	out.MasterPublicName = in.MasterPublicName
 	out.MasterInternalName = in.MasterInternalName
+	out.AdditionalSANs = in.AdditionalSANs
 	out.NetworkCIDR = in.NetworkCIDR
 	out.NetworkID = in.NetworkID
 	if in.Topology != nil {
