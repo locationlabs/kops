@@ -465,6 +465,10 @@ func (c *Cluster) FillDefaults() error {
 		// OK
 	} else if c.Spec.Networking.Cilium != nil {
 		// OK
+	} else if c.Spec.Networking.AmazonVPCIPVlan != nil {
+		if c.Spec.Networking.AmazonVPCIPVlan.BinariesDownloadURL == "" {
+			c.Spec.Networking.AmazonVPCIPVlan.BinariesDownloadURL = "https://github.com/lyft/cni-ipvlan-vpc-k8s/releases/download/v0.3.1/cni-ipvlan-vpc-k8s-v0.3.1.tar.gz"
+		}
 	} else {
 		// No networking model selected; choose Kubenet
 		c.Spec.Networking.Kubenet = &KubenetNetworkingSpec{}
