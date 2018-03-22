@@ -88,7 +88,7 @@ func (b *FirewallModelBuilder) buildNodeRules(c *fi.ModelBuilderContext) error {
 	}
 
 	// Pods running in Nodes could need to reach pods in master/s
-	if b.Cluster.Spec.Networking != nil && b.Cluster.Spec.Networking.AmazonVPC != nil {
+	if b.Cluster.Spec.Networking != nil && (b.Cluster.Spec.Networking.AmazonVPC != nil || b.Cluster.Spec.Networking.AmazonVPCIPVlan != nil) {
 		// Nodes can talk to masters
 		{
 			t := &awstasks.SecurityGroupRule{
