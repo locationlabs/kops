@@ -187,7 +187,7 @@ func (b *KubeletBuilder) buildSystemdEnvironmentFile(kubeletConfig *kops.Kubelet
 		flags += " --cni-bin-dir=" + b.CNIBinDir()
 		flags += " --cni-conf-dir=" + b.CNIConfDir()
 		// If we are using the AmazonVPC plugin we need to bind the kubelet to the local ipv4 address
-		if b.Cluster.Spec.Networking.AmazonVPC != nil {
+		if b.Cluster.Spec.Networking.AmazonVPC != nil || b.Cluster.Spec.Networking.AmazonVPCIPVlan != nil {
 			sess := session.Must(session.NewSession())
 			metadata := ec2metadata.New(sess)
 			localIpv4, err := metadata.GetMetadata("local-ipv4")
