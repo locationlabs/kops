@@ -45,7 +45,7 @@ func buildCloudupTags(cluster *api.Cluster) (sets.String, error) {
 	} else if networking.External != nil {
 		// external is based on kubenet
 		tags.Insert("_networking_kubenet", "_networking_external")
-	} else if networking.CNI != nil || networking.Weave != nil || networking.Flannel != nil || networking.Calico != nil || networking.Canal != nil || networking.Kuberouter != nil || networking.Romana != nil || networking.AmazonVPC != nil || networking.Cilium != nil || networking.AmazonVPCIPVlan != nil {
+	} else if networking.CNI != nil || networking.Weave != nil || networking.Flannel != nil || networking.Calico != nil || networking.Canal != nil || networking.Kuberouter != nil || networking.Romana != nil || networking.AmazonVPC != nil || networking.Cilium != nil || networking.LyftVPC != nil {
 		tags.Insert("_networking_cni")
 	} else if networking.Kopeio != nil {
 		// TODO combine with the External
@@ -127,8 +127,8 @@ func buildNodeupTags(role api.InstanceGroupRole, cluster *api.Cluster, clusterTa
 		tags.Insert("_networking_cni")
 	}
 
-	if networking.AmazonVPCIPVlan != nil {
-		tags.Insert("_amazon_vpc_ipvlan")
+	if networking.LyftVPC != nil {
+		tags.Insert("_lyft_vpc_cni")
 	}
 
 	switch role {
