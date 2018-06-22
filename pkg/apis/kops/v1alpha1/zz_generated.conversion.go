@@ -2675,6 +2675,7 @@ func Convert_kops_LoadBalancerAccessSpec_To_v1alpha1_LoadBalancerAccessSpec(in *
 }
 
 func autoConvert_v1alpha1_LyftVPCNetworkingSpec_To_kops_LyftVPCNetworkingSpec(in *LyftVPCNetworkingSpec, out *kops.LyftVPCNetworkingSpec, s conversion.Scope) error {
+	out.SubnetTags = in.SubnetTags
 	return nil
 }
 
@@ -2684,6 +2685,7 @@ func Convert_v1alpha1_LyftVPCNetworkingSpec_To_kops_LyftVPCNetworkingSpec(in *Ly
 }
 
 func autoConvert_kops_LyftVPCNetworkingSpec_To_v1alpha1_LyftVPCNetworkingSpec(in *kops.LyftVPCNetworkingSpec, out *LyftVPCNetworkingSpec, s conversion.Scope) error {
+	out.SubnetTags = in.SubnetTags
 	return nil
 }
 
